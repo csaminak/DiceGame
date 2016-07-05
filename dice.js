@@ -9,7 +9,9 @@ game.timestamp = {
 
 game.timestamp.element.innerHTML = 'Game started on ' + game.timestamp.start;
 
-game.rounds = [];
+game.rounds = [
+
+];
 
 game.dice1 = document.getElementById('dice1');
 game.dice2 = document.getElementById('dice2');
@@ -26,12 +28,11 @@ game.roll = function roll() {
     if ( ((dice1 + dice2) === 7) || ((dice1 + dice2) === 11) ) {
         document.getElementById('result').innerHTML = 'Winner!';
         var finish = new Date();
-        var time = ((finish.getTime()) - (game.timestamp.start.getTime()))/1000;
+        var time = Math.round((finish.getTime() - game.timestamp.start.getTime())/1000);
         document.getElementById('attempt').innerHTML = '(It took you ' + (game.rounds.length) + ' attempt(s) and ' + time + ' seconds)';
     } else {
         document.getElementById('result').innerHTML = 'Try Again';
     }
-    console.log(game.rounds)
 };
 
 document.getElementById('rollDice')
