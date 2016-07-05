@@ -7,11 +7,9 @@ game.timestamp = {
     start: new Date()
 };
 
-game.timestamp.element.innerHTML = 'Game started ' + game.timestamp.start;
+game.timestamp.element.innerHTML = 'Game started on ' + game.timestamp.start;
 
 game.rounds = [];
-
-
 
 game.dice1 = document.getElementById('dice1');
 game.dice2 = document.getElementById('dice2');
@@ -22,15 +20,19 @@ game.roll = function roll() {
 
     game.dice1.innerHTML = dice1; // TODO create function dry
     game.dice2.innerHTML = dice2;
+
+    game.rounds.push(dice1 + dice2);
+
     if ( ((dice1 + dice2) === 7) || ((dice1 + dice2) === 11) ) {
         document.getElementById('result').innerHTML = 'Winner!';
-        // document.getElementById('attempt').innerHTML = '(It took you ' + (game.rounds.length + 1) + ' and ' + time + ' seconds)';
+        var finish = new Date();
+        var time = ((finish.getTime()) - (game.timestamp.start.getTime()))/1000;
+        document.getElementById('attempt').innerHTML = '(It took you ' + (game.rounds.length) + ' attempt(s) and ' + time + ' seconds)';
     } else {
         document.getElementById('result').innerHTML = 'Try Again';
     }
+    console.log(game.rounds)
 };
-
-console.log(document.getElementById('rollDice'));
 
 document.getElementById('rollDice')
     .addEventListener('click', game.roll);
