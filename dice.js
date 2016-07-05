@@ -11,6 +11,8 @@ game.timestamp.element.innerHTML = 'Game started ' + game.timestamp.start;
 
 game.rounds = [];
 
+
+
 game.dice1 = document.getElementById('dice1');
 game.dice2 = document.getElementById('dice2');
 
@@ -22,7 +24,7 @@ game.roll = function roll() {
     game.dice2.innerHTML = dice2;
     if ( ((dice1 + dice2) === 7) || ((dice1 + dice2) === 11) ) {
         document.getElementById('result').innerHTML = 'Winner!';
-        // document.getElementById('attempt').innerHTML = '(It took you ' + game.rounds.length + ' and ' + time + ' seconds)';
+        // document.getElementById('attempt').innerHTML = '(It took you ' + (game.rounds.length + 1) + ' and ' + time + ' seconds)';
     } else {
         document.getElementById('result').innerHTML = 'Try Again';
     }
